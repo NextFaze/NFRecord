@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
-@interface NFRecord : NSObject
-
-@end
+#import "NFRecordBase.h"
+#import "NFRecordDebugging.h"
+#import "NSObject+NFRecord.h"
+#import "NSString+NFRecord.h"
+#import "NSArray+NFRecord.h"

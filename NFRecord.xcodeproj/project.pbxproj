@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		B5A42AA11A7076AA00822D08 /* NFRecord.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B5A42AA01A7076AA00822D08 /* NFRecord.h */; };
-		B5A42AA31A7076AA00822D08 /* NFRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = B5A42AA21A7076AA00822D08 /* NFRecord.m */; };
 		B5A42AA91A7076AA00822D08 /* libNFRecord.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B5A42A9D1A7076AA00822D08 /* libNFRecord.a */; };
 		B5A42AB91A7076BE00822D08 /* NFRecordBase.m in Sources */ = {isa = PBXBuildFile; fileRef = B5A42AB81A7076BE00822D08 /* NFRecordBase.m */; };
 		B5A42ABC1A70794A00822D08 /* NFRecordDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = B5A42ABB1A70794A00822D08 /* NFRecordDatabase.m */; };
@@ -48,7 +47,6 @@
 /* Begin PBXFileReference section */
 		B5A42A9D1A7076AA00822D08 /* libNFRecord.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libNFRecord.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5A42AA01A7076AA00822D08 /* NFRecord.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NFRecord.h; sourceTree = "<group>"; };
-		B5A42AA21A7076AA00822D08 /* NFRecord.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NFRecord.m; sourceTree = "<group>"; };
 		B5A42AA81A7076AA00822D08 /* NFRecordTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NFRecordTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5A42AAE1A7076AA00822D08 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B5A42AB71A7076BE00822D08 /* NFRecordBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NFRecordBase.h; sourceTree = "<group>"; };
@@ -58,7 +56,7 @@
 		B5A42ABF1A707B0F00822D08 /* NFRecordProperty.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NFRecordProperty.h; sourceTree = "<group>"; };
 		B5A42AC01A707B0F00822D08 /* NFRecordProperty.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NFRecordProperty.m; sourceTree = "<group>"; };
 		B5A42AC41A707B9900822D08 /* NFRecordPrefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NFRecordPrefix.pch; sourceTree = "<group>"; };
-		B5A42AC51A707BE700822D08 /* NFDebugging.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NFDebugging.h; sourceTree = "<group>"; };
+		B5A42AC51A707BE700822D08 /* NFRecordDebugging.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NFRecordDebugging.h; sourceTree = "<group>"; };
 		B5A42AD11A70A0A700822D08 /* NSString+NFRecord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+NFRecord.h"; sourceTree = "<group>"; };
 		B5A42AD21A70A0A700822D08 /* NSString+NFRecord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+NFRecord.m"; sourceTree = "<group>"; };
 		B5A42AD41A70A6EB00822D08 /* NSObject+NFRecord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+NFRecord.h"; sourceTree = "<group>"; };
@@ -120,7 +118,6 @@
 			isa = PBXGroup;
 			children = (
 				B5A42AA01A7076AA00822D08 /* NFRecord.h */,
-				B5A42AA21A7076AA00822D08 /* NFRecord.m */,
 				B5A42ACF1A70A08600822D08 /* Model */,
 				B5A42AD01A70A09500822D08 /* Categories */,
 				B5A42ABD1A7079D300822D08 /* Persistance */,
@@ -171,7 +168,7 @@
 			children = (
 				B5A42ADD1A70B15400822D08 /* NFRecordNotification.h */,
 				B5A42ADE1A70B15400822D08 /* NFRecordNotification.m */,
-				B5A42AC51A707BE700822D08 /* NFDebugging.h */,
+				B5A42AC51A707BE700822D08 /* NFRecordDebugging.h */,
 				B5A42AC41A707B9900822D08 /* NFRecordPrefix.pch */,
 			);
 			name = "Supporting Files";
@@ -294,7 +291,6 @@
 				B5A42AC11A707B0F00822D08 /* NFRecordProperty.m in Sources */,
 				B5A42ADF1A70B15400822D08 /* NFRecordNotification.m in Sources */,
 				B5A42ADC1A70AE0700822D08 /* NSDate+NFRecord.m in Sources */,
-				B5A42AA31A7076AA00822D08 /* NFRecord.m in Sources */,
 				B5A42AE21A70B25300822D08 /* NFRecordFetchRequest.m in Sources */,
 				B5A42AD91A70A98A00822D08 /* NFRecordSerialization.m in Sources */,
 				B5A42AB91A7076BE00822D08 /* NFRecordBase.m in Sources */,
