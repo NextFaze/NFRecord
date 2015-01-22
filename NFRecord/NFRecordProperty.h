@@ -1,6 +1,6 @@
 //
 //  NFRecordProperty.h
-//  NFAllocInit
+//  NFRecord
 //
 //  Created by Andrew Williams on 20/02/2014.
 //  Copyright (c) 2014 NextFaze SD. All rights reserved.

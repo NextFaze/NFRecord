@@ -73,6 +73,8 @@
 		B5A42AE11A70B25300822D08 /* NFRecordFetchRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NFRecordFetchRequest.m; sourceTree = "<group>"; };
 		B5A42AE31A70B7AE00822D08 /* NSArray+NFRecord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+NFRecord.h"; sourceTree = "<group>"; };
 		B5A42AE41A70B7AE00822D08 /* NSArray+NFRecord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+NFRecord.m"; sourceTree = "<group>"; };
+		B5A42AE61A70C35000822D08 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		B5A42AE81A70C43800822D08 /* NFRecord.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = NFRecord.podspec; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +99,8 @@
 		B5A42A941A7076AA00822D08 = {
 			isa = PBXGroup;
 			children = (
+				B5A42AE61A70C35000822D08 /* README.md */,
+				B5A42AE81A70C43800822D08 /* NFRecord.podspec */,
 				B5A42A9F1A7076AA00822D08 /* NFRecord */,
 				B5A42AAC1A7076AA00822D08 /* NFRecordTests */,
 				B5A42A9E1A7076AA00822D08 /* Products */,
