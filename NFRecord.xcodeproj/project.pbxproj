@@ -1,0 +1,371 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		B5A42AA11A7076AA00822D08 /* NFRecord.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B5A42AA01A7076AA00822D08 /* NFRecord.h */; };
+		B5A42AA31A7076AA00822D08 /* NFRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = B5A42AA21A7076AA00822D08 /* NFRecord.m */; };
+		B5A42AA91A7076AA00822D08 /* libNFRecord.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B5A42A9D1A7076AA00822D08 /* libNFRecord.a */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		B5A42AAA1A7076AA00822D08 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B5A42A951A7076AA00822D08 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B5A42A9C1A7076AA00822D08;
+			remoteInfo = NFRecord;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		B5A42A9B1A7076AA00822D08 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "include/$(PRODUCT_NAME)";
+			dstSubfolderSpec = 16;
+			files = (
+				B5A42AA11A7076AA00822D08 /* NFRecord.h in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		B5A42A9D1A7076AA00822D08 /* libNFRecord.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libNFRecord.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		B5A42AA01A7076AA00822D08 /* NFRecord.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NFRecord.h; sourceTree = "<group>"; };
+		B5A42AA21A7076AA00822D08 /* NFRecord.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NFRecord.m; sourceTree = "<group>"; };
+		B5A42AA81A7076AA00822D08 /* NFRecordTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NFRecordTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		B5A42AAE1A7076AA00822D08 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		B5A42A9A1A7076AA00822D08 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B5A42AA51A7076AA00822D08 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B5A42AA91A7076AA00822D08 /* libNFRecord.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		B5A42A941A7076AA00822D08 = {
+			isa = PBXGroup;
+			children = (
+				B5A42A9F1A7076AA00822D08 /* NFRecord */,
+				B5A42AAC1A7076AA00822D08 /* NFRecordTests */,
+				B5A42A9E1A7076AA00822D08 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		B5A42A9E1A7076AA00822D08 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				B5A42A9D1A7076AA00822D08 /* libNFRecord.a */,
+				B5A42AA81A7076AA00822D08 /* NFRecordTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		B5A42A9F1A7076AA00822D08 /* NFRecord */ = {
+			isa = PBXGroup;
+			children = (
+				B5A42AA01A7076AA00822D08 /* NFRecord.h */,
+				B5A42AA21A7076AA00822D08 /* NFRecord.m */,
+			);
+			path = NFRecord;
+			sourceTree = "<group>";
+		};
+		B5A42AAC1A7076AA00822D08 /* NFRecordTests */ = {
+			isa = PBXGroup;
+			children = (
+				B5A42AAD1A7076AA00822D08 /* Supporting Files */,
+			);
+			path = NFRecordTests;
+			sourceTree = "<group>";
+		};
+		B5A42AAD1A7076AA00822D08 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				B5A42AAE1A7076AA00822D08 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		B5A42A9C1A7076AA00822D08 /* NFRecord */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B5A42AB11A7076AA00822D08 /* Build configuration list for PBXNativeTarget "NFRecord" */;
+			buildPhases = (
+				B5A42A991A7076AA00822D08 /* Sources */,
+				B5A42A9A1A7076AA00822D08 /* Frameworks */,
+				B5A42A9B1A7076AA00822D08 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = NFRecord;
+			productName = NFRecord;
+			productReference = B5A42A9D1A7076AA00822D08 /* libNFRecord.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		B5A42AA71A7076AA00822D08 /* NFRecordTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B5A42AB41A7076AA00822D08 /* Build configuration list for PBXNativeTarget "NFRecordTests" */;
+			buildPhases = (
+				B5A42AA41A7076AA00822D08 /* Sources */,
+				B5A42AA51A7076AA00822D08 /* Frameworks */,
+				B5A42AA61A7076AA00822D08 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B5A42AAB1A7076AA00822D08 /* PBXTargetDependency */,
+			);
+			name = NFRecordTests;
+			productName = NFRecordTests;
+			productReference = B5A42AA81A7076AA00822D08 /* NFRecordTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		B5A42A951A7076AA00822D08 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0610;
+				ORGANIZATIONNAME = NextFaze;
+				TargetAttributes = {
+					B5A42A9C1A7076AA00822D08 = {
+						CreatedOnToolsVersion = 6.1.1;
+					};
+					B5A42AA71A7076AA00822D08 = {
+						CreatedOnToolsVersion = 6.1.1;
+					};
+				};
+			};
+			buildConfigurationList = B5A42A981A7076AA00822D08 /* Build configuration list for PBXProject "NFRecord" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = B5A42A941A7076AA00822D08;
+			productRefGroup = B5A42A9E1A7076AA00822D08 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				B5A42A9C1A7076AA00822D08 /* NFRecord */,
+				B5A42AA71A7076AA00822D08 /* NFRecordTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		B5A42AA61A7076AA00822D08 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		B5A42A991A7076AA00822D08 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B5A42AA31A7076AA00822D08 /* NFRecord.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B5A42AA41A7076AA00822D08 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		B5A42AAB1A7076AA00822D08 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B5A42A9C1A7076AA00822D08 /* NFRecord */;
+			targetProxy = B5A42AAA1A7076AA00822D08 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		B5A42AAF1A7076AA00822D08 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		B5A42AB01A7076AA00822D08 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		B5A42AB21A7076AA00822D08 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		B5A42AB31A7076AA00822D08 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		B5A42AB51A7076AA00822D08 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = NFRecordTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		B5A42AB61A7076AA00822D08 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = NFRecordTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		B5A42A981A7076AA00822D08 /* Build configuration list for PBXProject "NFRecord" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B5A42AAF1A7076AA00822D08 /* Debug */,
+				B5A42AB01A7076AA00822D08 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B5A42AB11A7076AA00822D08 /* Build configuration list for PBXNativeTarget "NFRecord" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B5A42AB21A7076AA00822D08 /* Debug */,
+				B5A42AB31A7076AA00822D08 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		B5A42AB41A7076AA00822D08 /* Build configuration list for PBXNativeTarget "NFRecordTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B5A42AB51A7076AA00822D08 /* Debug */,
+				B5A42AB61A7076AA00822D08 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = B5A42A951A7076AA00822D08 /* Project object */;
+}
