@@ -22,7 +22,7 @@
 - (void)setAttributes:(NSDictionary *)dict {
     if(dict == nil)
         return;
-    
+
     if(![dict isKindOfClass:[NSDictionary class]]) {
         NSLog(@"When assigning attributes, you must pass a dictionary as an argument.");
 #ifdef DEBUG
@@ -48,7 +48,7 @@
             // skip read-only properties on to object
             if(property.readonly)
                 continue;
-            
+
             // type casting
             value = [NFRecordBase castValue:value toClass:property.valueClass];
 
@@ -57,6 +57,16 @@
             [self setValue:value forKey:name];
         }
     }
+}
+
+- (NSDictionary *)attributes {
+    NSMutableDictionary *dict = [NSMutableDictionary dictionary];
+    for(NFRecordProperty *property in [NFRecordProperty propertiesFromClass:[self class]]) {
+        NSString *key = [property.name nfrecordUnderscored];  // controversial!
+        id value = [self valueForKey:property.name];
+        [dict setValue:value forKey:key];
+    }
+    return dict;
 }
 
 // merge property values from other into this object.
