@@ -33,16 +33,19 @@ Your model classes should extend NFRecordBase.  For example:
     @property (nonatomic, strong) NSString *breed;
     @property (nonatomic, strong) NSNumber *age;
     @property (nonatomic, strong) NSString *color;
+    @property (nonatomic, strong) NSString *raceName;
     @end
 
 to initialize a dog from a dictionary:
 
-    NSDictionary *attributes = @{ @"breed:: @"Doge", @"age": @(5), @"color": @"blue" };
+    NSDictionary *attributes = @{ @"breed:: @"Doge", @"age": @(5), @"color": @"blue", @"race_name": @"Doge" };
     Dog *dog = [Dog alloc] initWithDictionary:attributes];
 
 also, assign attributes from a dictionary:
 
     dog.attributes = @{ @"age": @(6) };
+
+Underscored attributes in dictionaries are automatically mapped to camelcase properties.
 
 ## Contact
 
