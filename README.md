@@ -23,6 +23,26 @@ implementation of an activerecord-like pattern for objective c
 
 Optionally, in your pre-compiled header (prefix.pch) add `#import "NFRecord.h"` to have access to all the classes throughout your project.
 
+## Usage
+
+### Models
+
+Your model classes should extend NFRecordBase.  For example:
+
+    @interface Dog : NFRecordBase
+    @property (nonatomic, strong) NSString *breed;
+    @property (nonatomic, strong) NSNumber *age;
+    @property (nonatomic, strong) NSString *color;
+    @end
+
+to initialize a dog from a dictionary:
+
+    NSDictionary *attributes = @{ @"breed:: @"Doge", @"age": @(5), @"color": @"blue" };
+    Dog *dog = [Dog alloc] initWithDictionary:attributes];
+
+also, assign attributes from a dictionary:
+
+    dog.attributes = @{ @"age": @(6) };
 
 ## Contact
 
