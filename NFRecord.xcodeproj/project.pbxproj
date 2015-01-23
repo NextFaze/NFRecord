@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B50F23D41A71CFD60050B4B0 /* NFRecordHTTP.m in Sources */ = {isa = PBXBuildFile; fileRef = B50F23D31A71CFD60050B4B0 /* NFRecordHTTP.m */; };
 		B5A42AA11A7076AA00822D08 /* NFRecord.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B5A42AA01A7076AA00822D08 /* NFRecord.h */; };
 		B5A42AA91A7076AA00822D08 /* libNFRecord.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B5A42A9D1A7076AA00822D08 /* libNFRecord.a */; };
 		B5A42AB91A7076BE00822D08 /* NFRecordBase.m in Sources */ = {isa = PBXBuildFile; fileRef = B5A42AB81A7076BE00822D08 /* NFRecordBase.m */; };
@@ -45,6 +46,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		B50F23D21A71CFD60050B4B0 /* NFRecordHTTP.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NFRecordHTTP.h; sourceTree = "<group>"; };
+		B50F23D31A71CFD60050B4B0 /* NFRecordHTTP.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NFRecordHTTP.m; sourceTree = "<group>"; };
 		B5A42A9D1A7076AA00822D08 /* libNFRecord.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libNFRecord.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5A42AA01A7076AA00822D08 /* NFRecord.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NFRecord.h; sourceTree = "<group>"; };
 		B5A42AA81A7076AA00822D08 /* NFRecordTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NFRecordTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -94,6 +97,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B50F23D11A71CECF0050B4B0 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				B50F23D21A71CFD60050B4B0 /* NFRecordHTTP.h */,
+				B50F23D31A71CFD60050B4B0 /* NFRecordHTTP.m */,
+			);
+			name = Networking;
+			sourceTree = "<group>";
+		};
 		B5A42A941A7076AA00822D08 = {
 			isa = PBXGroup;
 			children = (
@@ -121,6 +133,7 @@
 				B5A42ACF1A70A08600822D08 /* Model */,
 				B5A42AD01A70A09500822D08 /* Categories */,
 				B5A42ABD1A7079D300822D08 /* Persistance */,
+				B50F23D11A71CECF0050B4B0 /* Networking */,
 				B5A42AC21A707B8300822D08 /* Supporting Files */,
 				B5A42ABE1A7079FD00822D08 /* Reflection */,
 			);
@@ -293,6 +306,7 @@
 				B5A42ADC1A70AE0700822D08 /* NSDate+NFRecord.m in Sources */,
 				B5A42AE21A70B25300822D08 /* NFRecordFetchRequest.m in Sources */,
 				B5A42AD91A70A98A00822D08 /* NFRecordSerialization.m in Sources */,
+				B50F23D41A71CFD60050B4B0 /* NFRecordHTTP.m in Sources */,
 				B5A42AB91A7076BE00822D08 /* NFRecordBase.m in Sources */,
 				B5A42AD61A70A6EB00822D08 /* NSObject+NFRecord.m in Sources */,
 				B5A42AE51A70B7AE00822D08 /* NSArray+NFRecord.m in Sources */,
@@ -462,6 +476,7 @@
 				B5A42AB31A7076AA00822D08 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		B5A42AB41A7076AA00822D08 /* Build configuration list for PBXNativeTarget "NFRecordTests" */ = {
 			isa = XCConfigurationList;
@@ -470,6 +485,7 @@
 				B5A42AB61A7076AA00822D08 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

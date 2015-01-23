@@ -11,5 +11,6 @@
 @interface NSString (NFRecord)
 
 - (NSString *)nfrecordUnderscored;
+- (NSString *)nfrecordUrlEncodeUsingEncoding:(NSStringEncoding)encoding;
 
 @end

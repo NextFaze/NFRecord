@@ -8,8 +8,11 @@
 
 #import <Foundation/Foundation.h>
 
-#import "NFRecordBase.h"
 #import "NFRecordDebugging.h"
 #import "NSObject+NFRecord.h"
 #import "NSString+NFRecord.h"
 #import "NSArray+NFRecord.h"
+
+#import "NFRecordBase.h"
+#import "NFRecordHTTP.h"
+#import "NFRecordDatabase.h"
