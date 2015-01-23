@@ -38,13 +38,18 @@
         NSString *underscoredName = [name nfrecordUnderscore];
         NSString *capitalizedName = [name nfrecordCapitalize];
         id value = nil;
+        BOOL foundValue = NO;
         
         for(NSString *key in @[name, underscoredName, capitalizedName]) {
             if([dictKeys containsObject:key]) {
                 value = dict[key];
+                foundValue = YES;
                 break;
             }
         }
+        if(!foundValue)
+            continue;
+
         //NFLog(@"%@ -> %@", name, underscoredName);
 
         if([value isKindOfClass:[NSDictionary class]] && [property.valueClass isSubclassOfClass:[NFRecordBase class]]) {

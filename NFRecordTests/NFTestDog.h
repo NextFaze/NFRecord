@@ -14,4 +14,7 @@
 @property (nonatomic, strong) NSNumber *age;
 @property (nonatomic, strong) NSString *color;
 @property (nonatomic, strong) NSString *raceName;
+
+@property (nonatomic, assign) BOOL isHungry;
+
 @end

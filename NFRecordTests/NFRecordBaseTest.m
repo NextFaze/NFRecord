@@ -25,7 +25,7 @@
     [super tearDown];
 }
 
-#pragma mark -
+#pragma mark - Setting attributes
 
 - (void)testAssignAttributes {
     NFTestDog *dog = [[NFTestDog alloc] init];
@@ -54,12 +54,40 @@
     XCTAssertEqualObjects(dog.raceName, @"Crafty");
 }
 
+// test that assigning attributes doesn't overwrite attributes not present in the dictionary
+- (void)testAssignAttributesMissing {
+    NFTestDog *dog = [[NFTestDog alloc] init];
+    dog.raceName = @"Crafty";
+    dog.attributes = @{ @"breed": @"Doge" };
+    XCTAssertEqualObjects(dog.raceName, @"Crafty");
+}
+
+#pragma mark - Getting attributes
+
 - (void)testGetAttributes {
     NFTestDog *dog = [[NFTestDog alloc] init];
     dog.breed = @"Doge";
     NSDictionary *attribs = dog.attributes;
     //NSLog(@"attributes: %@", attribs);
     XCTAssertEqualObjects(attribs[@"breed"], @"Doge");
+}
+
+#pragma mark - Casting
+
+- (void)testCastBoolTrueFalse {
+    NFTestDog *dog = [[NFTestDog alloc] init];
+    dog.attributes = @{ @"is_hungry": @"true" };
+    XCTAssertEqual(dog.isHungry, YES);
+    dog.attributes = @{ @"is_hungry": @"false" };
+    XCTAssertEqual(dog.isHungry, NO);
+}
+
+- (void)testCastBoolNumber {
+    NFTestDog *dog = [[NFTestDog alloc] init];
+    dog.attributes = @{ @"is_hungry": [NSNumber numberWithBool:YES] };
+    XCTAssertEqual(dog.isHungry, YES);
+    dog.attributes = @{ @"is_hungry": [NSNumber numberWithBool:NO] };
+    XCTAssertEqual(dog.isHungry, NO);
 }
 
 /*
