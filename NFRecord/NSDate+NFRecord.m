@@ -16,6 +16,7 @@ static NSArray *dateFormats = nil;
     if(dateFormats == nil) {
         // date formatters, executed in order when parsing dates
         dateFormats = @[[self nfrecordDateFormatterWithFormat:@"y-MM-dd'T'HH:mm:ss.SSS'Z'"],
+                        [self nfrecordDateFormatterWithFormat:@"y-MM-dd HH:mm:ss a"],  // date/time with AM/PM
                         [self nfrecordDateFormatterWithFormat:@"y-MM-dd"],
                         [self nfrecordDateFormatterWithFormat:@"MMM dd, HH:mm"],
                         [self nfrecordDateFormatterWithFormat:@"MMM dd, y HH:mm:ss"],
