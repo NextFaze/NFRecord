@@ -35,11 +35,18 @@
     NSArray *dictKeys = [dict allKeys];
     for(NFRecordProperty *property in [NFRecordProperty propertiesFromClass:[self class]]) {
         NSString *name = property.name;
-        NSString *underscoredName = [name nfrecordUnderscored];
+        NSString *underscoredName = [name nfrecordUnderscore];
+        NSString *capitalizedName = [name nfrecordCapitalize];
+        id value = nil;
         
-        id value = [dictKeys containsObject:underscoredName] ? dict[underscoredName] : dict[name];
+        for(NSString *key in @[name, underscoredName, capitalizedName]) {
+            if([dictKeys containsObject:key]) {
+                value = dict[key];
+                break;
+            }
+        }
         //NFLog(@"%@ -> %@", name, underscoredName);
-        
+
         if([value isKindOfClass:[NSDictionary class]] && [property.valueClass isSubclassOfClass:[NFRecordBase class]]) {
             NFRecordBase *target = [self valueForKey:name];
             target.attributes = value;
@@ -62,7 +69,10 @@
 - (NSDictionary *)attributes {
     NSMutableDictionary *dict = [NSMutableDictionary dictionary];
     for(NFRecordProperty *property in [NFRecordProperty propertiesFromClass:[self class]]) {
-        NSString *key = [property.name nfrecordUnderscored];  // controversial!
+        NSString *key = [property.name nfrecordUnderscore];  // controversial!
+        if([key isEqualToString:@"attributes"])
+            continue;
+        
         id value = [self valueForKey:property.name];
         [dict setValue:value forKey:key];
     }

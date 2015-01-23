@@ -23,7 +23,7 @@
                                                                                  CFStringConvertNSStringEncodingToEncoding(encoding)));
 }
 
-- (NSString *)nfrecordUnderscored {
+- (NSString *)nfrecordUnderscore {
     NSMutableString *text = [self mutableCopy];
     for(;;) {
         NSRange range = [text rangeOfString:@"[a-z][A-Z]" options:NSRegularExpressionSearch];
@@ -32,6 +32,11 @@
         [text insertString:@"_" atIndex:range.location + 1];
     }
     return [text lowercaseString];
+}
+
+- (NSString *)nfrecordCapitalize {
+    NSMutableString *text = [self mutableCopy];
+    return [self capitalizeCharacterAtIndex:0 string:text];
 }
 
 - (NSString *)nfrecordCamelize {
@@ -48,20 +53,20 @@
     }
     
     // capitalize first character
-    [self capitalizeCharacterAtIndex:0 string:text];
-    return text;
+    return [self capitalizeCharacterAtIndex:0 string:text];
 }
 
 #pragma mark - Utility
 
-- (void)capitalizeCharacterAtIndex:(NSUInteger)index string:(NSMutableString *)string {
-    unichar ch = [string characterAtIndex:index];
+- (NSMutableString *)capitalizeCharacterAtIndex:(NSUInteger)index string:(NSMutableString *)string {
+    unichar ch = string.length > index ? [string characterAtIndex:index] : '\0';
     if(ch >= 'a' && ch <= 'z') {
         ch = ch - 'a' + 'A';
         NSString *replacement = [NSString stringWithFormat:@"%c", ch];
         NSRange range = NSMakeRange(index, 1);
         [string replaceCharactersInRange:range withString:replacement];
     }
+    return string;
 }
 
 @end

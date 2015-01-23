@@ -37,23 +37,25 @@ static NSDictionary *objectProperties = nil;  // map of class name to property d
 
 // retrieves and caches property list for the given class
 + (NSArray *)propertiesFromClass:(Class)klass {
-        NSArray *properties = nil;
-        @synchronized(self) {
-            NSString *key = NSStringFromClass(klass);
-            properties = [objectProperties valueForKey:key];
-            if(properties == nil) {
-                //NFLog(@"getting properties for %@", key);
-                // load properties for this class, and save in dictionary
-                NSMutableDictionary *dict = [objectProperties mutableCopy];
-                if(dict == nil)
-                    dict = [NSMutableDictionary dictionary];
-                
-                properties = dict[key] = [self findPropertiesFromClass:klass];
-                objectProperties = dict;
-            }
+    NSArray *properties = nil;
+    if(klass == nil) return nil;
+    
+    @synchronized(self) {
+        NSString *key = NSStringFromClass(klass);
+        properties = [objectProperties valueForKey:key];
+        if(properties == nil) {
+            //NFLog(@"getting properties for %@", key);
+            // load properties for this class, and save in dictionary
+            NSMutableDictionary *dict = [objectProperties mutableCopy];
+            if(dict == nil)
+                dict = [NSMutableDictionary dictionary];
+            
+            properties = dict[key] = [self findPropertiesFromClass:klass];
+            objectProperties = dict;
         }
-        return properties;
     }
+    return properties;
+}
 
 + (NSArray *)findPropertiesFromClass:(Class)klass {
     NSMutableArray *list = [NSMutableArray array];
@@ -78,7 +80,7 @@ static NSDictionary *objectProperties = nil;  // map of class name to property d
             }
         }
         free(properties);
-
+        
         klass = [klass superclass];
     }
     return list;
@@ -90,7 +92,7 @@ static NSDictionary *objectProperties = nil;  // map of class name to property d
     
     for(NSString *attribute in attributes) {
         if([attribute hasPrefix:@"T"] && !propertyType) {
-           propertyType = attribute;
+            propertyType = attribute;
         }
         else if([attribute isEqualToString:@"R"]) {
             _readonly = YES;
@@ -117,7 +119,7 @@ static NSDictionary *objectProperties = nil;  // map of class name to property d
 
 - (NSString *)description {
     NSMutableArray *modifiers = [NSMutableArray array];
-
+    
     [modifiers addObject:self.nonatomic ? @"nonatomic" : @"atomic"];
     if(self.weak) [modifiers addObject:@"weak"];
     if(self.copy) [modifiers addObject:@"copy"];

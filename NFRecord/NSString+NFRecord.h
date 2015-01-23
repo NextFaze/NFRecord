@@ -10,7 +10,8 @@
 
 @interface NSString (NFRecord)
 
-- (NSString *)nfrecordUnderscored;
+- (NSString *)nfrecordUnderscore;
+- (NSString *)nfrecordCapitalize;
 - (NSString *)nfrecordUrlEncodeUsingEncoding:(NSStringEncoding)encoding;
 
 @end
