@@ -37,10 +37,12 @@
         NSString *name = property.name;
         NSString *underscoredName = [name nfrecordUnderscore];
         NSString *capitalizedName = [name nfrecordCapitalize];
+        NSString *uppercasedName = [name uppercaseString];
+        NSString *downcasedName = [name lowercaseString];
         id value = nil;
         BOOL foundValue = NO;
         
-        for(NSString *key in @[name, underscoredName, capitalizedName]) {
+        for(NSString *key in @[name, underscoredName, capitalizedName, downcasedName, uppercasedName]) {
             if([dictKeys containsObject:key]) {
                 value = dict[key];
                 foundValue = YES;
