@@ -24,6 +24,7 @@ typedef enum {
     NFRecordPropertyDataTypeUnsignedLongLong,
     NFRecordPropertyDataTypeShort,
     NFRecordPropertyDataTypeUnsignedShort,
+    NFRecordPropertyDataTypeBool,
     NFRecordPropertyDataTypeChar,
     NFRecordPropertyDataTypeUnsignedChar,
     NFRecordPropertyDataTypeObject,

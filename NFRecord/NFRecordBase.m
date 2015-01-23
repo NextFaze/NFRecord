@@ -22,7 +22,7 @@
 - (void)setAttributes:(NSDictionary *)dict {
     if(dict == nil)
         return;
-
+    
     if(![dict isKindOfClass:[NSDictionary class]]) {
         NSLog(@"When assigning attributes, you must pass a dictionary as an argument.");
 #ifdef DEBUG
@@ -30,7 +30,7 @@
 #endif
         return;
     }
-
+    
     self.updatedAt = [NSDate date];
     NSArray *dictKeys = [dict allKeys];
     for(NFRecordProperty *property in [NFRecordProperty propertiesFromClass:[self class]]) {
@@ -49,9 +49,9 @@
         }
         if(!foundValue)
             continue;
-
+        
         //NFLog(@"%@ -> %@", name, underscoredName);
-
+        
         if([value isKindOfClass:[NSDictionary class]] && [property.valueClass isSubclassOfClass:[NFRecordBase class]]) {
             NFRecordBase *target = [self valueForKey:name];
             target.attributes = value;
@@ -60,10 +60,10 @@
             // skip read-only properties on to object
             if(property.readonly)
                 continue;
-
+            
             // type casting
-            value = [NFRecordBase castValue:value toClass:property.valueClass];
-
+            value = [NFRecordBase castValue:value toProperty:property];
+            
             //BOOL isNull = !value || [value isKindOfClass:[NSNull class]];
             // apply value
             [self setValue:value forKey:name];
@@ -133,7 +133,7 @@
         }
         else {
             // assign value
-            NSObject *toValue = [self castValue:fromValue toClass:toProperty.valueClass];
+            NSObject *toValue = [self castValue:fromValue toProperty:toProperty];
             [to setValue:toValue forKey:name];
         }
     }
@@ -141,29 +141,44 @@
 
 #pragma mark - Private
 
-+ (NSObject *)castValue:(NSObject *)value toClass:(Class)toClass {
-    if(value == nil || [value isKindOfClass:[NSNull class]])
-        return nil;
-
++ (NSObject *)castValue:(NSObject *)value toProperty:(NFRecordProperty *)property {
+    Class toClass = property.valueClass;
+    
+    if([value isKindOfClass:[NSNull class]])
+        value = nil;
+    
     if([value isKindOfClass:toClass])
         return value;
-
+    
+    if(value != nil) {
+        // to class conversions
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wundeclared-selector"
-    if([toClass respondsToSelector:@selector(valueFromString:)]) {
-        value = [toClass performSelector:@selector(valueFromString:) withObject:[value nfrecordStringValue]];;
-    }
-    else if([toClass respondsToSelector:@selector(nfrecordValueFromString:)]) {
-        value = [toClass performSelector:@selector(nfrecordValueFromString:) withObject:[value nfrecordStringValue]];;
-    }
+        if([toClass respondsToSelector:@selector(valueFromString:)]) {
+            value = [toClass performSelector:@selector(valueFromString:) withObject:[value nfrecordStringValue]];;
+        }
+        else if([toClass respondsToSelector:@selector(nfrecordValueFromString:)]) {
+            value = [toClass performSelector:@selector(nfrecordValueFromString:) withObject:[value nfrecordStringValue]];;
+        }
 #pragma clang diagnostic pop
-    else if([toClass isEqual:[NSNumber class]]) {
-        value = @([[value nfrecordStringValue] doubleValue]);
-    }
-    else if([toClass isEqual:[NSString class]]) {
-        value = [value nfrecordStringValue];
+        else if([toClass isEqual:[NSNumber class]]) {
+            value = @([[value nfrecordStringValue] doubleValue]);
+        }
+        else if([toClass isEqual:[NSString class]]) {
+            value = [value nfrecordStringValue];
+        }
     }
 
+    // property value type conversions
+    if(property.valueType == NFRecordPropertyDataTypeBool) {
+        if(value == nil || [value isKindOfClass:[NSNull class]]) {
+            value = [NSNumber numberWithBool:NO];
+        }
+        else if([value respondsToSelector:@selector(boolValue)]) {
+            value = @((BOOL)[value performSelector:@selector(boolValue)]);
+        }
+    }
+    
     return value;
 }
 

@@ -159,6 +159,8 @@ static NSDictionary *objectProperties = nil;  // map of class name to property d
             return @"short";
         case NFRecordPropertyDataTypeUnsignedShort:
             return @"unsigned short";
+        case NFRecordPropertyDataTypeBool:
+            return @"BOOL";
     }
 }
 
@@ -202,8 +204,9 @@ static NSDictionary *objectProperties = nil;  // map of class name to property d
             return NFRecordPropertyDataTypeLong;
         case 'L':
             return NFRecordPropertyDataTypeUnsignedLong;
-        case 'c':
         case 'B':  // boolean, only returned by newer devices
+            return NFRecordPropertyDataTypeBool;
+        case 'c':
             return NFRecordPropertyDataTypeChar;
         case 'C':
             return NFRecordPropertyDataTypeUnsignedChar;

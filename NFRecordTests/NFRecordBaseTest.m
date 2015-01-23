@@ -90,6 +90,18 @@
     XCTAssertEqual(dog.isHungry, NO);
 }
 
+- (void)testCastStringNSNull {
+    NFTestDog *dog = [[NFTestDog alloc] init];
+    dog.attributes = @{ @"breed": [NSNull null] };
+    XCTAssertEqualObjects(dog.breed, nil);
+}
+
+- (void)testCastBoolNSNull {
+    NFTestDog *dog = [[NFTestDog alloc] init];
+    dog.attributes = @{ @"is_hungry": [NSNull null] };
+    XCTAssertEqual(dog.isHungry, NO);
+}
+
 /*
 - (void)testPerformanceExample {
     // This is an example of a performance test case.
