@@ -8,20 +8,10 @@ implementation of an activerecord-like pattern for objective c
 
     pod 'NFRecord', :git => 'https://github.com/NextFaze/NFRecord.git'
 
-### Via Submodules
+### As a submodule / static library
 
-1. Add submodule to your project:
-
-    `$ git submodule add git@github.com:NextfazeSD/NFRecord.git ThirdParty/NFRecord`
-    
-2. Drag the NFRecord.xcodeproj project file from Finder to the ThirdParty folder in your project tree.
-3. Add `NFRecord` to target's Target Dependencies in Build Phases. 
-4. Add `libNFRecord.a` in Link Binary with Libraries.
-5. Also, in Link Binary with Libraries add `AVFoundation.framework`.
-6. Add to other linker flags `-ObjC`.
-7. Add to header search paths `ThirdParty/` with recursive selected.
-
-Optionally, in your pre-compiled header (prefix.pch) add `#import "NFRecord.h"` to have access to all the classes throughout your project.
+The project contains a NFRecord target that compiles to a cocoa touch static
+library, which can be added in the normal way.
 
 ## Usage
 
