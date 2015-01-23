@@ -54,6 +54,10 @@
         
         if([value isKindOfClass:[NSDictionary class]] && [property.valueClass isSubclassOfClass:[NFRecordBase class]]) {
             NFRecordBase *target = [self valueForKey:name];
+            if(target == nil) {
+                target = [[property.valueClass alloc] init];
+                [self setValue:target forKey:name];
+            }
             target.attributes = value;
         }
         else {

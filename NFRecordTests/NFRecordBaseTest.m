@@ -62,6 +62,13 @@
     XCTAssertEqualObjects(dog.raceName, @"Crafty");
 }
 
+// test assigning nested attributes
+- (void)testAssignAttributesNested {
+    NFTestDog *dog = [[NFTestDog alloc] init];
+    dog.attributes = @{ @"breed": @"Doge", @"owner": @{ @"name": @"Doge owner" } };
+    XCTAssertEqualObjects(dog.owner.name, @"Doge owner");
+}
+
 #pragma mark - Getting attributes
 
 - (void)testGetAttributes {
