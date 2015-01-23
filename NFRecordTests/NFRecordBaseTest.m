@@ -33,6 +33,13 @@
     XCTAssertEqualObjects(dog.breed, @"Doge");
 }
 
+// test capitalized
+- (void)testAssignAttributesCapitalized {
+    NFTestDog *dog = [[NFTestDog alloc] init];
+    dog.attributes = @{ @"Breed": @"Doge" };
+    XCTAssertEqualObjects(dog.breed, @"Doge");
+}
+
 // test camel case with capitalized first letter
 - (void)testAssignAttributesCamelCapitalized {
     NFTestDog *dog = [[NFTestDog alloc] init];
