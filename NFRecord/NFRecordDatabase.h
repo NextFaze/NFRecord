@@ -21,6 +21,8 @@ typedef void(^NFRecordDatabaseRequestBlock)(NFRecordFetchRequest *request);
 @property (readonly, atomic) NSManagedObjectContext *context;
 @property (readonly, assign) BOOL enabled;
 
+- (id)initWithDataModelName:(NSString *)name bundle:(NSBundle *)bundle;
+
 - (void)performBlockWithoutNotifications:(void (^)())block;
 - (void)performAndWait:(BOOL)wait notify:(BOOL)notify block:(void (^)())block;
 
