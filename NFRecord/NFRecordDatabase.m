@@ -69,14 +69,14 @@
     return predicate;
 }
 
-- (NSManagedObjectModel *)findOrCreate:(NSString *)entityName primaryKey:(NSString *)key itemId:(NSObject *)itemId {
+- (NSManagedObjectModel *)findOrCreate:(NSString *)entityName primaryKey:(NSString *)key recordId:(NSObject *)recordId {
     NSPredicate *primaryKeyPredicate = [self primaryKeyPredicate:key];
     NSEntityDescription *entity = [NSEntityDescription entityForName:entityName inManagedObjectContext:self.context];
     NSError *error = nil;
     
     NSFetchRequest *request = [[NSFetchRequest alloc] init];
     request.entity = entity;
-    request.predicate = [primaryKeyPredicate predicateWithSubstitutionVariables:@{ @"ITEM_ID" : itemId }];
+    request.predicate = [primaryKeyPredicate predicateWithSubstitutionVariables:@{ @"ITEM_ID" : recordId }];
     request.fetchLimit = 1;
     
     NSManagedObjectModel *mo = [[self.context executeFetchRequest:request error:&error] firstObject];
@@ -89,15 +89,15 @@
 // create map of existing items in the database by key
 // e.g. given params [array(Record), @"Listing"], it returns a map of recordId -> Record items referenced by the items
 - (NSMutableDictionary *)objectMap:(NSArray *)items entityName:(NSString *)entityName {
-    NSSet *relatedItemIds = [items nfrecordIdSet];
+    NSSet *relatedrecordIds = [items nfrecordIdSet];
     NSPredicate *predicate = nil;
 
-    if([relatedItemIds count] == 0) {
+    if([relatedrecordIds count] == 0) {
         return [NSMutableDictionary dictionary];
-    } else if([relatedItemIds count] == 1) {
-        predicate = [NSPredicate predicateWithFormat:@"recordId = %@", [[relatedItemIds allObjects] firstObject]];
+    } else if([relatedrecordIds count] == 1) {
+        predicate = [NSPredicate predicateWithFormat:@"recordId = %@", [[relatedrecordIds allObjects] firstObject]];
     } else {
-        predicate = [NSPredicate predicateWithFormat:@"recordId IN %%@", relatedItemIds];
+        predicate = [NSPredicate predicateWithFormat:@"recordId IN %%@", relatedrecordIds];
     }
 
     // read related items
@@ -175,14 +175,14 @@
 
     for(NFRecordBase *item in items) {
         // try to find existing item by id, else create new item
-        NSObject<NSCopying> *itemId = item.recordId;
-        //NSManagedObjectModel *moItem = [self findOrCreate:entityName primaryKey:item.primaryKey itemId:itemId];
-        NSManagedObjectModel *moItem = itemId ? [itemMap objectForKey:itemId] : nil;
+        NSObject<NSCopying> *recordId = item.recordId;
+        //NSManagedObjectModel *moItem = [self findOrCreate:entityName primaryKey:item.primaryKey recordId:recordId];
+        NSManagedObjectModel *moItem = recordId ? [itemMap objectForKey:recordId] : nil;
         if(moItem == nil) {
             moItem = [self newItem:entityName];
 
-            if(itemId != nil)
-                [itemMap setObject:moItem forKey:itemId];
+            if(recordId != nil)
+                [itemMap setObject:moItem forKey:recordId];
         }
 
         // merge data into database item
@@ -276,7 +276,7 @@
     return [self readItems:entityName predicate:nil];
 }
 
-- (NSSet *)readItemIds:(NSString *)entityName predicate:(NSPredicate *)predicate {
+- (NSSet *)readrecordIds:(NSString *)entityName predicate:(NSPredicate *)predicate {
     return [self readItem:entityName property:@"recordId" predicate:predicate];
 }
 

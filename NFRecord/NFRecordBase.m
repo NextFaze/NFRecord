@@ -31,8 +31,11 @@
         return;
     }
     
-    self.updatedAt = [NSDate date];
-    NSArray *dictKeys = [dict allKeys];
+    NSMutableDictionary *attribs = [dict mutableCopy];
+    if(attribs[@"id"])
+        attribs[@"recordId"] = attribs[@"id"];
+    
+    NSArray *dictKeys = [attribs allKeys];
     for(NFRecordProperty *property in [NFRecordProperty propertiesFromClass:[self class]]) {
         NSString *name = property.name;
         NSString *underscoredName = [name nfrecordUnderscore];
@@ -41,10 +44,10 @@
         NSString *downcasedName = [name lowercaseString];
         id value = nil;
         BOOL foundValue = NO;
-        
+
         for(NSString *key in @[name, underscoredName, capitalizedName, downcasedName, uppercasedName]) {
             if([dictKeys containsObject:key]) {
-                value = dict[key];
+                value = attribs[key];
                 foundValue = YES;
                 break;
             }
@@ -75,6 +78,8 @@
             [self setValue:value forKey:name];
         }
     }
+    
+    self.updatedAt = [NSDate date];
 }
 
 - (NSDictionary *)attributes {
@@ -85,64 +90,14 @@
             continue;
         
         id value = [self valueForKey:property.name];
+
+        // recursively get attributes for NFRecord objects
+        if([value isKindOfClass:[NFRecordBase class]])
+            value = [value attributes];
+        
         [dict setValue:value forKey:key];
     }
     return dict;
-}
-
-// merge property values from other into this object.
-// values in this object are overwritten with non-nil values from other.
-- (void)merge:(NSObject *)other {
-    [NFRecordBase merge:other into:self];
-}
-
-+ (void)merge:(NSObject *)from into:(NSObject *)to {
-    // skip nil objects
-    if(to == nil || from == nil)
-        return;
-    
-    NSArray *toProperties = [NFRecordProperty propertiesFromClass:[to class]];
-    NSArray *fromProperties = [NFRecordProperty propertiesFromClass:[from class]];
-    
-    // iterate to-object properties
-    for(NFRecordProperty *toProperty in toProperties) {
-        NSString *name = toProperty.name;
-        NFRecordProperty *fromProperty = nil;
-        BOOL toNFRecord = [toProperty.valueClass isSubclassOfClass:[NFRecordBase class]];
-        
-        // skip read-only properties on to object (unless merge into NFRecordBase)
-        if(toProperty.readonly && !toNFRecord)
-            continue;
-        
-        for(NFRecordProperty *prop in fromProperties) {
-            if([prop.name isEqualToString:name]) {
-                fromProperty = prop;
-                break;
-            }
-        }
-        
-        // skip if the from object does not have the corresponding property
-        if(fromProperty == nil)
-            continue;
-        
-        // skip if the from value is nil
-        id fromValue = [from valueForKey:name];
-        if(fromValue == nil || [fromValue isKindOfClass:[NSNull class]])
-            continue;
-        
-        //LOG(@"merge %@.%@ %@", [from class], name, fromValue);
-        
-        if(toNFRecord) {
-            // recursive merge into NFRecordBase
-            NFRecordBase *toValue = [to valueForKey:name];
-            [toValue merge:fromValue];
-        }
-        else {
-            // assign value
-            NSObject *toValue = [self castValue:fromValue toProperty:toProperty];
-            [to setValue:toValue forKey:name];
-        }
-    }
 }
 
 #pragma mark - Private

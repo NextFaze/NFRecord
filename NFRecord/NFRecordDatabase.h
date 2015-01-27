@@ -31,7 +31,7 @@ typedef void(^NFRecordDatabaseRequestBlock)(NFRecordFetchRequest *request);
 - (NSArray *)readItems:(NSString *)entityName predicate:(NSPredicate *)predicate;
 - (NSArray *)readItems:(NSString *)entityName requestBlock:(NFRecordDatabaseRequestBlock)block;
 
-- (NSSet *)readItemIds:(NSString *)entityName predicate:(NSPredicate *)predicate;
+- (NSSet *)readrecordIds:(NSString *)entityName predicate:(NSPredicate *)predicate;
 - (NSSet *)readItem:(NSString *)entityName property:(NSString *)property predicate:(NSPredicate *)predicate;
 
 - (void)deleteItems:(NSArray *)items;
