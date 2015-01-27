@@ -20,4 +20,6 @@
 
 + (void)merge:(NSObject *)from into:(NSObject *)to;
 
++ (void)transaction:(void (^)())block;
+
 @end

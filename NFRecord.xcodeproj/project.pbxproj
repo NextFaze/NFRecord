@@ -11,6 +11,7 @@
 		B50F23D61A71E9B20050B4B0 /* NFRecordBaseTest.m in Sources */ = {isa = PBXBuildFile; fileRef = B50F23D51A71E9B20050B4B0 /* NFRecordBaseTest.m */; };
 		B50F23DB1A71E9FD0050B4B0 /* NFTestDog.m in Sources */ = {isa = PBXBuildFile; fileRef = B50F23DA1A71E9FD0050B4B0 /* NFTestDog.m */; };
 		B50F23E11A71FF300050B4B0 /* NFTestPerson.m in Sources */ = {isa = PBXBuildFile; fileRef = B50F23E01A71FF300050B4B0 /* NFTestPerson.m */; };
+		B58F0AD61A7214CF003E4E6E /* NFRecordDatabaseConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = B58F0AD51A7214CF003E4E6E /* NFRecordDatabaseConfiguration.m */; };
 		B5A42AA11A7076AA00822D08 /* NFRecord.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B5A42AA01A7076AA00822D08 /* NFRecord.h */; };
 		B5A42AA91A7076AA00822D08 /* libNFRecord.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B5A42A9D1A7076AA00822D08 /* libNFRecord.a */; };
 		B5A42AB91A7076BE00822D08 /* NFRecordBase.m in Sources */ = {isa = PBXBuildFile; fileRef = B5A42AB81A7076BE00822D08 /* NFRecordBase.m */; };
@@ -56,6 +57,8 @@
 		B50F23DA1A71E9FD0050B4B0 /* NFTestDog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NFTestDog.m; sourceTree = "<group>"; };
 		B50F23DF1A71FF300050B4B0 /* NFTestPerson.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NFTestPerson.h; sourceTree = "<group>"; };
 		B50F23E01A71FF300050B4B0 /* NFTestPerson.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NFTestPerson.m; sourceTree = "<group>"; };
+		B58F0AD41A7214CF003E4E6E /* NFRecordDatabaseConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NFRecordDatabaseConfiguration.h; sourceTree = "<group>"; };
+		B58F0AD51A7214CF003E4E6E /* NFRecordDatabaseConfiguration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NFRecordDatabaseConfiguration.m; sourceTree = "<group>"; };
 		B5A42A9D1A7076AA00822D08 /* libNFRecord.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libNFRecord.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5A42AA01A7076AA00822D08 /* NFRecord.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NFRecord.h; sourceTree = "<group>"; };
 		B5A42AA81A7076AA00822D08 /* NFRecordTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NFRecordTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -158,7 +161,7 @@
 				B5A42AA01A7076AA00822D08 /* NFRecord.h */,
 				B5A42ACF1A70A08600822D08 /* Model */,
 				B5A42AD01A70A09500822D08 /* Categories */,
-				B5A42ABD1A7079D300822D08 /* Persistance */,
+				B5A42ABD1A7079D300822D08 /* Persistence */,
 				B50F23D11A71CECF0050B4B0 /* Networking */,
 				B5A42AC21A707B8300822D08 /* Supporting Files */,
 				B5A42ABE1A7079FD00822D08 /* Reflection */,
@@ -185,15 +188,17 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		B5A42ABD1A7079D300822D08 /* Persistance */ = {
+		B5A42ABD1A7079D300822D08 /* Persistence */ = {
 			isa = PBXGroup;
 			children = (
 				B5A42AE01A70B25300822D08 /* NFRecordFetchRequest.h */,
 				B5A42AE11A70B25300822D08 /* NFRecordFetchRequest.m */,
 				B5A42ABA1A70794A00822D08 /* NFRecordDatabase.h */,
 				B5A42ABB1A70794A00822D08 /* NFRecordDatabase.m */,
+				B58F0AD41A7214CF003E4E6E /* NFRecordDatabaseConfiguration.h */,
+				B58F0AD51A7214CF003E4E6E /* NFRecordDatabaseConfiguration.m */,
 			);
-			name = Persistance;
+			name = Persistence;
 			sourceTree = "<group>";
 		};
 		B5A42ABE1A7079FD00822D08 /* Reflection */ = {
@@ -340,6 +345,7 @@
 				B5A42AD61A70A6EB00822D08 /* NSObject+NFRecord.m in Sources */,
 				B5A42AE51A70B7AE00822D08 /* NSArray+NFRecord.m in Sources */,
 				B5A42AD31A70A0A700822D08 /* NSString+NFRecord.m in Sources */,
+				B58F0AD61A7214CF003E4E6E /* NFRecordDatabaseConfiguration.m in Sources */,
 				B5A42ABC1A70794A00822D08 /* NFRecordDatabase.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

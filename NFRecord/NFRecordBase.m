@@ -145,6 +145,12 @@
     }
 }
 
+#pragma mark - Persistence
+
++ (void)transaction:(void (^)())block {
+    
+}
+
 #pragma mark - Private
 
 + (NSObject *)castValue:(NSObject *)value toProperty:(NFRecordProperty *)property {
