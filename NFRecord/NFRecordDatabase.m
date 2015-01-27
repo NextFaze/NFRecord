@@ -17,15 +17,19 @@
 @property (strong, nonatomic) NSPersistentStoreCoordinator *persistentStoreCoordinator;
 @property (assign, nonatomic) BOOL sendNotifications;
 @property (strong, nonatomic) NSDictionary *primaryKeyPredicates;
+@property (nonatomic, strong) NSString *dataModelName;
+@property (nonatomic, strong) NSBundle *bundle;
 @end
 
 @implementation NFRecordDatabase
 
-- (id)init {
+- (id)initWithDataModelName:(NSString *)name bundle:(NSBundle *)bundle {
     self = [super init];
     if(self) {
         // create context
         NFLog(@"database initialising");
+        _dataModelName = name;
+        _bundle = bundle;
         _context = [self managedObjectContext];
         _sendNotifications = YES;
     }
@@ -117,6 +121,7 @@
 }
 
 - (id)newItem:(NSString *)entityName {
+    NFLog(@"entity name: %@, context: %@", entityName, self.context);
     return [NSEntityDescription insertNewObjectForEntityForName:entityName inManagedObjectContext:self.context];
 }
 
@@ -345,7 +350,14 @@
     if (_managedObjectModel != nil) {
         return _managedObjectModel;
     }
-    NSURL *modelURL = [[NSBundle mainBundle] URLForResource:@"NFRecord" withExtension:@"momd"];
+    
+    NSURL *modelURL = [self.bundle URLForResource:self.dataModelName withExtension:@"momd"];
+    if(modelURL == nil) {
+        // model not found
+        NFLog(@"model file not found: %@", self.dataModelName);
+        abort();
+    }
+    NFLog(@"model url: %@", modelURL);
     _managedObjectModel = [[NSManagedObjectModel alloc] initWithContentsOfURL:modelURL];
     return _managedObjectModel;
 }
@@ -359,7 +371,8 @@
     // Create the coordinator and store
     
     _persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:[self managedObjectModel]];
-    NSURL *storeURL = [[self applicationDocumentsDirectory] URLByAppendingPathComponent:@"NFRecord.sqlite"];
+    NSString *storeFilename = [NSString stringWithFormat:@"%@.sqlite", self.dataModelName];
+    NSURL *storeURL = [[self applicationDocumentsDirectory] URLByAppendingPathComponent:storeFilename];
     NFLog(@"store url: %@", storeURL);
     NSError *error = nil;
     if (![_persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeURL options:nil error:&error]) {

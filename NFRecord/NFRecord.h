@@ -13,6 +13,7 @@
 #import "NSString+NFRecord.h"
 #import "NSArray+NFRecord.h"
 
+#import "NFRecord
 #import "NFRecordBase.h"
 #import "NFRecordHTTP.h"
 #import "NFRecordDatabase.h"

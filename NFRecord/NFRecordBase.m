@@ -8,6 +8,8 @@
 
 #import "NFRecordBase.h"
 #import "NFRecordProperty.h"
+#import "NFRecordTransaction.h"
+#import "NFRecordConfig.h"
 
 @implementation NFRecordBase
 
@@ -148,7 +150,26 @@
 #pragma mark - Persistence
 
 + (void)transaction:(void (^)())block {
-    
+    if(block) {
+        [NFRecordTransaction startTransaction];
+        block();
+        [NFRecordTransaction endTransaction];
+    }
+}
+
++ (NFRecordDatabase *)database {
+    return [[NFRecordConfig sharedInstance] database];
+}
+
+- (void)save {
+    NFRecordTransaction *transaction = [NFRecordTransaction currentTransaction];
+    if(transaction) {
+        // add record to collection
+        transaction.records = [transaction.records arrayByAddingObject:self];
+    } else {
+        // save single record
+        [[self.class database] saveItems:@[self]];
+    }
 }
 
 #pragma mark - Private

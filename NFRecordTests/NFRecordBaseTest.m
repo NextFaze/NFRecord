@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <XCTest/XCTest.h>
 #import "NFTestDog.h"
+#import "NFRecordConfig.h"
 
 @interface NFRecordBaseTest : XCTestCase
 @end
@@ -18,6 +19,10 @@
 - (void)setUp {
     [super setUp];
     // Put setup code here. This method is called before the invocation of each test method in the class.
+    
+    NSBundle *bundle = [NSBundle bundleForClass:[self class]];
+    NFRecordDatabase *db = [[NFRecordDatabase alloc] initWithDataModelName:@"NFTestDb" bundle:bundle];
+    [[NFRecordConfig sharedInstance] setDatabase:db];
 }
 
 - (void)tearDown {
@@ -121,6 +126,26 @@
     NFTestDog *dog = [[NFTestDog alloc] init];
     dog.attributes = @{ @"is_hungry": [NSNull null] };
     XCTAssertEqual(dog.isHungry, NO);
+}
+
+#pragma mark - Persistence
+
+
+- (void)testSaveRead {
+    
+    // delete all dogs
+    NFRecordDatabase *db = [[NFRecordConfig sharedInstance] database];
+    [db deleteAll:@"NFTestDog"];
+    
+    NFTestDog *dog = [[NFTestDog alloc] init];
+    dog.raceName = @"Crafty";
+    [dog save];
+    
+    //XCTestExpectation *saveExpectation = [self expectationWithDescription:@"record saved"];
+    sleep(1);
+
+    NFTestDog *dog2 = [[db readItems:@"NFTestDog"] firstObject];
+    XCTAssertEqualObjects(dog2.raceName, @"Crafty");
 }
 
 /*

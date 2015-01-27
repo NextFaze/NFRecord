@@ -12,6 +12,9 @@
 		B50F23DB1A71E9FD0050B4B0 /* NFTestDog.m in Sources */ = {isa = PBXBuildFile; fileRef = B50F23DA1A71E9FD0050B4B0 /* NFTestDog.m */; };
 		B50F23E11A71FF300050B4B0 /* NFTestPerson.m in Sources */ = {isa = PBXBuildFile; fileRef = B50F23E01A71FF300050B4B0 /* NFTestPerson.m */; };
 		B58F0AD61A7214CF003E4E6E /* NFRecordDatabaseConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = B58F0AD51A7214CF003E4E6E /* NFRecordDatabaseConfiguration.m */; };
+		B59401731A771295005C11ED /* NFRecordTransaction.m in Sources */ = {isa = PBXBuildFile; fileRef = B59401721A771295005C11ED /* NFRecordTransaction.m */; };
+		B59401761A773D7C005C11ED /* NFRecordConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = B59401751A773D7C005C11ED /* NFRecordConfig.m */; };
+		B594017A1A7744B4005C11ED /* NFTestDb.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B59401781A7744B4005C11ED /* NFTestDb.xcdatamodeld */; };
 		B5A42AA11A7076AA00822D08 /* NFRecord.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B5A42AA01A7076AA00822D08 /* NFRecord.h */; };
 		B5A42AA91A7076AA00822D08 /* libNFRecord.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B5A42A9D1A7076AA00822D08 /* libNFRecord.a */; };
 		B5A42AB91A7076BE00822D08 /* NFRecordBase.m in Sources */ = {isa = PBXBuildFile; fileRef = B5A42AB81A7076BE00822D08 /* NFRecordBase.m */; };
@@ -24,6 +27,8 @@
 		B5A42ADF1A70B15400822D08 /* NFRecordNotification.m in Sources */ = {isa = PBXBuildFile; fileRef = B5A42ADE1A70B15400822D08 /* NFRecordNotification.m */; };
 		B5A42AE21A70B25300822D08 /* NFRecordFetchRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = B5A42AE11A70B25300822D08 /* NFRecordFetchRequest.m */; };
 		B5A42AE51A70B7AE00822D08 /* NSArray+NFRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = B5A42AE41A70B7AE00822D08 /* NSArray+NFRecord.m */; };
+		B5F3AA0A1A775BBD000C2258 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B5A42AAE1A7076AA00822D08 /* Info.plist */; };
+		B5F3AA0D1A775DFA000C2258 /* MOTestDog.m in Sources */ = {isa = PBXBuildFile; fileRef = B5F3AA0C1A775DFA000C2258 /* MOTestDog.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +64,11 @@
 		B50F23E01A71FF300050B4B0 /* NFTestPerson.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NFTestPerson.m; sourceTree = "<group>"; };
 		B58F0AD41A7214CF003E4E6E /* NFRecordDatabaseConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NFRecordDatabaseConfiguration.h; sourceTree = "<group>"; };
 		B58F0AD51A7214CF003E4E6E /* NFRecordDatabaseConfiguration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NFRecordDatabaseConfiguration.m; sourceTree = "<group>"; };
+		B59401711A771295005C11ED /* NFRecordTransaction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NFRecordTransaction.h; sourceTree = "<group>"; };
+		B59401721A771295005C11ED /* NFRecordTransaction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NFRecordTransaction.m; sourceTree = "<group>"; };
+		B59401741A773D7C005C11ED /* NFRecordConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NFRecordConfig.h; sourceTree = "<group>"; };
+		B59401751A773D7C005C11ED /* NFRecordConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NFRecordConfig.m; sourceTree = "<group>"; };
+		B59401791A7744B4005C11ED /* NFTestDb.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = NFTestDb.xcdatamodel; sourceTree = "<group>"; };
 		B5A42A9D1A7076AA00822D08 /* libNFRecord.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libNFRecord.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5A42AA01A7076AA00822D08 /* NFRecord.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NFRecord.h; sourceTree = "<group>"; };
 		B5A42AA81A7076AA00822D08 /* NFRecordTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NFRecordTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -87,6 +97,8 @@
 		B5A42AE41A70B7AE00822D08 /* NSArray+NFRecord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+NFRecord.m"; sourceTree = "<group>"; };
 		B5A42AE61A70C35000822D08 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		B5A42AE81A70C43800822D08 /* NFRecord.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = NFRecord.podspec; sourceTree = "<group>"; };
+		B5F3AA0B1A775DFA000C2258 /* MOTestDog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MOTestDog.h; sourceTree = "<group>"; };
+		B5F3AA0C1A775DFA000C2258 /* MOTestDog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MOTestDog.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -135,6 +147,16 @@
 			name = Tests;
 			sourceTree = "<group>";
 		};
+		B59401771A7744A1005C11ED /* Database */ = {
+			isa = PBXGroup;
+			children = (
+				B59401781A7744B4005C11ED /* NFTestDb.xcdatamodeld */,
+				B5F3AA0B1A775DFA000C2258 /* MOTestDog.h */,
+				B5F3AA0C1A775DFA000C2258 /* MOTestDog.m */,
+			);
+			name = Database;
+			sourceTree = "<group>";
+		};
 		B5A42A941A7076AA00822D08 = {
 			isa = PBXGroup;
 			children = (
@@ -172,6 +194,7 @@
 		B5A42AAC1A7076AA00822D08 /* NFRecordTests */ = {
 			isa = PBXGroup;
 			children = (
+				B59401771A7744A1005C11ED /* Database */,
 				B50F23D71A71E9D70050B4B0 /* Classes */,
 				B50F23D81A71E9E10050B4B0 /* Tests */,
 				B50F23D51A71E9B20050B4B0 /* NFRecordBaseTest.m */,
@@ -197,6 +220,8 @@
 				B5A42ABB1A70794A00822D08 /* NFRecordDatabase.m */,
 				B58F0AD41A7214CF003E4E6E /* NFRecordDatabaseConfiguration.h */,
 				B58F0AD51A7214CF003E4E6E /* NFRecordDatabaseConfiguration.m */,
+				B59401711A771295005C11ED /* NFRecordTransaction.h */,
+				B59401721A771295005C11ED /* NFRecordTransaction.m */,
 			);
 			name = Persistence;
 			sourceTree = "<group>";
@@ -228,6 +253,8 @@
 				B5A42AB81A7076BE00822D08 /* NFRecordBase.m */,
 				B5A42AD71A70A98A00822D08 /* NFRecordSerialization.h */,
 				B5A42AD81A70A98A00822D08 /* NFRecordSerialization.m */,
+				B59401741A773D7C005C11ED /* NFRecordConfig.h */,
+				B59401751A773D7C005C11ED /* NFRecordConfig.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -325,6 +352,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B5F3AA0A1A775BBD000C2258 /* Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -337,9 +365,11 @@
 			files = (
 				B5A42AC11A707B0F00822D08 /* NFRecordProperty.m in Sources */,
 				B5A42ADF1A70B15400822D08 /* NFRecordNotification.m in Sources */,
+				B59401761A773D7C005C11ED /* NFRecordConfig.m in Sources */,
 				B5A42ADC1A70AE0700822D08 /* NSDate+NFRecord.m in Sources */,
 				B5A42AE21A70B25300822D08 /* NFRecordFetchRequest.m in Sources */,
 				B5A42AD91A70A98A00822D08 /* NFRecordSerialization.m in Sources */,
+				B59401731A771295005C11ED /* NFRecordTransaction.m in Sources */,
 				B50F23D41A71CFD60050B4B0 /* NFRecordHTTP.m in Sources */,
 				B5A42AB91A7076BE00822D08 /* NFRecordBase.m in Sources */,
 				B5A42AD61A70A6EB00822D08 /* NSObject+NFRecord.m in Sources */,
@@ -357,6 +387,8 @@
 				B50F23DB1A71E9FD0050B4B0 /* NFTestDog.m in Sources */,
 				B50F23E11A71FF300050B4B0 /* NFTestPerson.m in Sources */,
 				B50F23D61A71E9B20050B4B0 /* NFRecordBaseTest.m in Sources */,
+				B594017A1A7744B4005C11ED /* NFTestDb.xcdatamodeld in Sources */,
+				B5F3AA0D1A775DFA000C2258 /* MOTestDog.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -534,6 +566,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		B59401781A7744B4005C11ED /* NFTestDb.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				B59401791A7744B4005C11ED /* NFTestDb.xcdatamodel */,
+			);
+			currentVersion = B59401791A7744B4005C11ED /* NFTestDb.xcdatamodel */;
+			path = NFTestDb.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = B5A42A951A7076AA00822D08 /* Project object */;
 }
