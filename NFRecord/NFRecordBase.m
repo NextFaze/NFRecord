@@ -76,9 +76,9 @@
             // type casting
             value = [self castValue:value toProperty:property];
             
-            //BOOL isNull = !value || [value isKindOfClass:[NSNull class]];
-            // apply value
-            [target setValue:value forKey:name];
+            if (value && name) {
+                [target setValue:value forKey:name];
+            }
         }
     }
 }
