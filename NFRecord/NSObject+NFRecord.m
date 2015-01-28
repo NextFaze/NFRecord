@@ -7,6 +7,8 @@
 //
 
 #import "NSObject+NFRecord.h"
+#import "NFRecordProperty.h"
+#import "NFRecordBase.h"
 
 @implementation NSObject (NFRecord)
 
@@ -17,6 +19,24 @@
     else {
         return [self description];
     }
+}
+
+- (NSDictionary *)nfrecordAttributes {
+    NSMutableDictionary *dict = [NSMutableDictionary dictionary];
+    for(NFRecordProperty *property in [NFRecordProperty propertiesFromClass:[self class]]) {
+        NSString *key = [property.name nfrecordUnderscore];  // controversial!
+        if([key isEqualToString:@"attributes"])
+            continue;
+        
+        id value = [self valueForKey:property.name];
+
+        // recursively get attributes for NFRecord objects
+        if([value isKindOfClass:[NFRecordBase class]])
+            value = [value nfrecordAttributes];
+        
+        [dict setValue:value forKey:key];
+    }
+    return dict;
 }
 
 @end

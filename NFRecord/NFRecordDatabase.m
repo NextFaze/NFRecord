@@ -191,7 +191,7 @@
         }
 
         // merge data into database item
-        [NFRecordBase merge:item into:moItem];
+        [NFRecordBase applyAttributes:item.attributes to:moItem];
     }
 
     error = nil;
@@ -241,7 +241,9 @@
             NFRecordBase *item = [[recordClass alloc] init];
             if(item == nil) continue;
 
-            [NFRecordBase merge:moItem into:item];
+            NSDictionary *moItemAttribs = [moItem nfrecordAttributes];
+            [NFRecordBase applyAttributes:moItemAttribs to:item];
+            //[NFRecordBase merge:moItem into:item];
             [records addObject:item];
         }
         items = records;
@@ -250,7 +252,7 @@
         // do not convert
         items = moItems;
     }
-    
+
     NFLog(@"read %lu %@ items from database", (unsigned long)items.count, [entityName lowercaseString]);
     NSMutableDictionary *userInfo = [[NSMutableDictionary alloc] init];
     userInfo[@"entityName"] = entityName;

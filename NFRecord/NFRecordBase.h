@@ -18,7 +18,7 @@
 @property (nonatomic, strong) NSDate *createdAt;
 @property (nonatomic, strong) NSDate *updatedAt;
 
-+ (void)merge:(NSObject *)from into:(NSObject *)to;
++ (void)applyAttributes:(NSDictionary *)dict to:(NSObject *)target;
 + (void)transaction:(void (^)())block;
 
 - (void)save;

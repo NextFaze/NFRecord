@@ -11,5 +11,6 @@
 @interface NSObject (NFRecord)
 
 - (NSString *)nfrecordStringValue;
+- (NSDictionary *)nfrecordAttributes;
 
 @end

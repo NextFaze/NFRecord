@@ -10,6 +10,7 @@
 #import "NFRecordProperty.h"
 #import "NFRecordTransaction.h"
 #import "NFRecordConfig.h"
+#import "NSObject+NFRecord.h"
 
 @implementation NFRecordBase
 
@@ -21,7 +22,7 @@
 
 #pragma mark -
 
-- (void)setAttributes:(NSDictionary *)dict {
++ (void)applyAttributes:(NSDictionary *)dict to:(NSObject *)target {
     if(dict == nil)
         return;
     
@@ -36,9 +37,9 @@
     NSMutableDictionary *attribs = [dict mutableCopy];
     if(attribs[@"id"])
         attribs[@"recordId"] = attribs[@"id"];
-    
+
     NSArray *dictKeys = [attribs allKeys];
-    for(NFRecordProperty *property in [NFRecordProperty propertiesFromClass:[self class]]) {
+    for(NFRecordProperty *property in [NFRecordProperty propertiesFromClass:[target class]]) {
         NSString *name = property.name;
         NSString *underscoredName = [name nfrecordUnderscore];
         NSString *capitalizedName = [name nfrecordCapitalize];
@@ -46,7 +47,7 @@
         NSString *downcasedName = [name lowercaseString];
         id value = nil;
         BOOL foundValue = NO;
-
+        
         for(NSString *key in @[name, underscoredName, capitalizedName, downcasedName, uppercasedName]) {
             if([dictKeys containsObject:key]) {
                 value = attribs[key];
@@ -58,14 +59,14 @@
             continue;
         
         //NFLog(@"%@ -> %@", name, underscoredName);
-        
+        //NFLog(@"%@ %@ value: %@ (%@)", [target class], name, [target valueForKey:name], [property.valueClass description]);
         if([value isKindOfClass:[NSDictionary class]] && [property.valueClass isSubclassOfClass:[NFRecordBase class]]) {
-            NFRecordBase *target = [self valueForKey:name];
-            if(target == nil) {
-                target = [[property.valueClass alloc] init];
-                [self setValue:target forKey:name];
+            NFRecordBase *targetValue = [target valueForKey:name];
+            if(targetValue == nil) {
+                targetValue = [[property.valueClass alloc] init];
+                [target setValue:targetValue forKey:name];
             }
-            target.attributes = value;
+            targetValue.attributes = value;
         }
         else {
             // skip read-only properties on to object
@@ -73,33 +74,25 @@
                 continue;
             
             // type casting
-            value = [NFRecordBase castValue:value toProperty:property];
+            value = [self castValue:value toProperty:property];
             
             //BOOL isNull = !value || [value isKindOfClass:[NSNull class]];
             // apply value
-            [self setValue:value forKey:name];
+            [target setValue:value forKey:name];
         }
     }
-    
+}
+
+#pragma mark -
+
+- (void)setAttributes:(NSDictionary *)dict {
+    [[self class] applyAttributes:dict to:self];
+
     self.updatedAt = [NSDate date];
 }
 
 - (NSDictionary *)attributes {
-    NSMutableDictionary *dict = [NSMutableDictionary dictionary];
-    for(NFRecordProperty *property in [NFRecordProperty propertiesFromClass:[self class]]) {
-        NSString *key = [property.name nfrecordUnderscore];  // controversial!
-        if([key isEqualToString:@"attributes"])
-            continue;
-        
-        id value = [self valueForKey:property.name];
-
-        // recursively get attributes for NFRecord objects
-        if([value isKindOfClass:[NFRecordBase class]])
-            value = [value attributes];
-        
-        [dict setValue:value forKey:key];
-    }
-    return dict;
+    return [self nfrecordAttributes];
 }
 
 #pragma mark - Persistence
