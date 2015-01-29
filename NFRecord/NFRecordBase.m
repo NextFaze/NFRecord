@@ -84,9 +84,7 @@ static NSArray *falseStrings = nil;
             // type casting
             value = [self castValue:value toProperty:property];
             
-            if (value && name) {
-                [target setValue:value forKey:name];
-            }
+            [target setValue:value forKey:name];
         }
     }
 }
