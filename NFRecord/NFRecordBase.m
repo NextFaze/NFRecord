@@ -189,6 +189,7 @@ static NSArray *falseStrings = nil;
             }
             else {
                 NFLog(@"could not convert value '%@' to char", value);
+                value = '\0';
             }
         }
     }
