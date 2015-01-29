@@ -12,7 +12,15 @@
 #import "NFRecordConfig.h"
 #import "NSObject+NFRecord.h"
 
+static NSArray *trueStrings = nil;
+static NSArray *falseStrings = nil;
+
 @implementation NFRecordBase
+
++ (void)initialize {
+    trueStrings = @[@"true", @"yes"];
+    falseStrings = @[@"false", @"no"];
+}
 
 - (id)initWithDictionary:(NSDictionary *)dict {
     self = [super init];
@@ -37,7 +45,7 @@
     NSMutableDictionary *attribs = [dict mutableCopy];
     if(attribs[@"id"])
         attribs[@"recordId"] = attribs[@"id"];
-
+    
     NSArray *dictKeys = [attribs allKeys];
     for(NFRecordProperty *property in [NFRecordProperty propertiesFromClass:[target class]]) {
         NSString *name = property.name;
@@ -87,7 +95,7 @@
 
 - (void)setAttributes:(NSDictionary *)dict {
     [[self class] applyAttributes:dict to:self];
-
+    
     self.updatedAt = [NSDate date];
 }
 
@@ -149,14 +157,41 @@
             value = [value nfrecordStringValue];
         }
     }
-
+    
     // property value type conversions
-    if(property.valueType == NFRecordPropertyDataTypeBool) {
+    if(property.valueType == NFRecordPropertyDataTypeBool ||
+       (property.valueType == NFRecordPropertyDataTypeChar && [value isKindOfClass:[NSNumber class]])) {
+        // boolean conversion
         if(value == nil || [value isKindOfClass:[NSNull class]]) {
             value = [NSNumber numberWithBool:NO];
         }
         else if([value respondsToSelector:@selector(boolValue)]) {
             value = @((BOOL)[value performSelector:@selector(boolValue)]);
+        }
+    }
+    else if(property.valueType == NFRecordPropertyDataTypeChar) {
+        // character conversion
+        if(value == nil || [value isKindOfClass:[NSNull class]]) {
+            value = [NSNumber numberWithChar:'\0'];
+        }
+        else if(![value respondsToSelector:@selector(charValue)]) {
+            // value needs to be converted to char
+            if([value isKindOfClass:[NSString class]]) {
+                if([trueStrings containsObject:value]) {
+                    value = @(YES);
+                }
+                else if([falseStrings containsObject:value]) {
+                    value = @(NO);
+                }
+                else {
+                    NSString *str = (NSString *)value;
+                    char ch = str.length > 0 ? [str characterAtIndex:0] : '\0';
+                    value = [NSNumber numberWithChar:ch];
+                }
+            }
+            else {
+                NFLog(@"could not convert value '%@' to char", value);
+            }
         }
     }
     

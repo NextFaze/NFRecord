@@ -81,6 +81,14 @@
     XCTAssertEqualObjects(dog.raceName, @"Crafty");
 }
 
+// test that assigning nil attributes deletes values
+- (void)testAssignAttributesNil {
+    NFTestDog *dog = [[NFTestDog alloc] init];
+    dog.breed = @"Doge";
+    dog.attributes = @{ @"breed": [NSNull null] };
+    XCTAssertNil(dog.breed);
+}
+
 // test assigning nested attributes
 - (void)testAssignAttributesNested {
     NFTestDog *dog = [[NFTestDog alloc] init];

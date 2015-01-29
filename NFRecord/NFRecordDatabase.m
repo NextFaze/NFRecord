@@ -283,7 +283,7 @@
     return [self readItems:entityName predicate:nil];
 }
 
-- (NSSet *)readrecordIds:(NSString *)entityName predicate:(NSPredicate *)predicate {
+- (NSSet *)readItemIds:(NSString *)entityName predicate:(NSPredicate *)predicate {
     return [self readItem:entityName property:@"recordId" predicate:predicate];
 }
 
