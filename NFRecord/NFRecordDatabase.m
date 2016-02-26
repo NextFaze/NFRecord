@@ -73,7 +73,7 @@
     return predicate;
 }
 
-- (NSManagedObjectModel *)findOrCreate:(NSString *)entityName primaryKey:(NSString *)key recordId:(NSObject *)recordId {
+- (NSManagedObject *)findOrCreate:(NSString *)entityName primaryKey:(NSString *)key recordId:(NSObject *)recordId {
     NSPredicate *primaryKeyPredicate = [self primaryKeyPredicate:key];
     NSEntityDescription *entity = [NSEntityDescription entityForName:entityName inManagedObjectContext:self.context];
     NSError *error = nil;
@@ -83,7 +83,7 @@
     request.predicate = [primaryKeyPredicate predicateWithSubstitutionVariables:@{ @"ITEM_ID" : recordId }];
     request.fetchLimit = 1;
     
-    NSManagedObjectModel *mo = [[self.context executeFetchRequest:request error:&error] firstObject];
+    NSManagedObject *mo = [[self.context executeFetchRequest:request error:&error] firstObject];
     if(mo == nil) {
         mo = [NSEntityDescription insertNewObjectForEntityForName:entityName inManagedObjectContext:self.context];
     }
